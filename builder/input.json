@@ -1,0 +1,17 @@
+{
+	"actions": [{
+			"type": "move",
+			"args": {
+				"distance": "100",
+				"velocity": "100"
+			}
+		},
+		{
+			"type": "turn",
+			"args": {
+				"angle": "90",
+				"velocity": "100"
+			}
+		}
+	]
+}
