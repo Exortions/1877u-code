@@ -1,3 +1,4 @@
+#include "generated-auton.h"
 #include "auton.h"
 #include "vex.h"
 
@@ -34,8 +35,5 @@ void turn(int angle, int velocity) {
 void auton() {
   std::cout << "Running auton" << std::endl;
 
-  // TODO: implement auton
-
-  move(100, 100);
-  turn(90, 100);
+  generated_auton();
 }
