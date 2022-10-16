@@ -1,0 +1,1 @@
+void generated_auton();

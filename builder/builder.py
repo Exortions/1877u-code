@@ -6,12 +6,12 @@ def parse_action(action: any) -> str:
 
     if actionType == 'move':
         try:
-            return f'move({int(args["distance"])}, {int(args["velocity"])})'
+            return f'move({int(args["distance"])}, {int(args["velocity"])});'
         except ex:
             raise ValueError(f'not all arguments (distance, velocity) were accounted for in current args: {args}')
     elif actionType == 'turn':
         try:
-            return f'turn({int(args["angle"])}, {int(args["velocity"])})'
+            return f'turn({int(args["angle"])}, {int(args["velocity"])});'
         except ex:
             raise ValueError(f'not all arguments (angle, velocity) were accounted for in current args: {args}')
     raise ValueError(f'invalid action type: {actionType}')
@@ -36,5 +36,9 @@ for action in actions:
 
     print(f'Result: {res}\n')
 
-with open('out.cpp', 'w') as f:
-    f.write('\n'.join(results))
+with open('../src/generated-auton.cpp', 'w') as f:
+    auton = '\n  '.join(results)
+
+    code = '#include "generated-auton.h"\n#include "actions.h"\n#include "auton.h"\n\nvoid generated_auton() {\n  ' + auton + '\n}'
+
+    f.write(code)
